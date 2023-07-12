@@ -1,9 +1,11 @@
-import{Container} from './styles'
+import{Container} from './styles';
+
+import {IoIosArrowBack} from 'react-icons/io';
 
 export function Button(){
     return(
-        <Container>
-            
+        <Container  to="/" type="button">
+            <IoIosArrowBack/>Voltar
         </Container>
     )
 }

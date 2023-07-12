@@ -17,7 +17,8 @@ export default {
       LIGHT_400: "#C4C4CC",
       LIGHT_500: "#7C7CBA",
       LIGHT_600: "#76797B",
-      LIGHT_700: "4D585E",
+      LIGHT_700: "#4D585E",
+      LIGHT_800: "#7C7C8A",
 
       TOMATO_100:"#750310",
       TOMATO_200:"#92000E",
