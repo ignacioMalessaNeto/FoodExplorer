@@ -4,13 +4,15 @@ import { HeaderUser } from '../../Components/HeaderUser'
 
 import food from '../../assets/food.png';
 
-import { useRef } from 'react';
+import { useRef, useState,useEffect } from 'react';
 
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import { CardUser } from '../../Components/CardUser';
 
 import { Footer } from '../../Components/Footer';
+
+import { api } from '../../Services/api';
 
 export function UserHome() {
     const carossel = useRef(null);
@@ -107,6 +109,28 @@ export function UserHome() {
         carosselDrinks.current.scrollLeft = newScrollLeft;
     };
 
+    const [allDishes, setAllDishes] = useState([]);
+    const [meals, setMeals] = useState();
+    const [desserts, setDesserts] = useState();
+    const [drinks, setDrinks] = useState();
+
+    function filterCategories(allDishes){
+        setMeals(allDishes.filter((dish) => dish.category === "meal"))
+        setDesserts(allDishes.filter((dish) => dish.category === "dessert"))
+        setDrinks(allDishes.filter((dish) => dish.category === "drinks"))
+    }
+
+    useEffect(() => {
+        async function fecthDishs() {
+            const response = await api.get("/dish");
+            filterCategories(response.data);
+            setAllDishes(response.data);
+        }
+
+        fecthDishs();
+    }, [])
+
+
     return (
         <Container>
             <HeaderUser />
@@ -116,40 +140,9 @@ export function UserHome() {
                 <div className='carrosel' ref={carossel}>
                     <button className='arrowLeft' onClick={handleLeftClick}><IoIosArrowBack size={40} /></button>
 
-                    <CardUser
-                        name="Bananada com"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
+                    { 
+                        meals && <CardUser data={meals} key={meals.id}/>
+                    }
 
                     <button className='arrowright' onClick={handleRightClick}><IoIosArrowForward size={40} /></button>
                 </div>
@@ -158,84 +151,21 @@ export function UserHome() {
             <div className='containerCarrosel'>
                 <div className='carrosel' ref={carosselSobremesas}>
                     <button className='arrowLeft' onClick={handleLeftClickSobremesas}><IoIosArrowBack size={40} /></button>
+                    { 
+                        desserts && <CardUser data={desserts} key={desserts.id}/>
+                    }
 
-                    <CardUser
-                        name="Bananada com"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-
-                    />
-
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-
-                    />
-                     <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-
-                    />
-                     <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-
-                    />
                     <button className='arrowright' onClick={handleRightClickSobremesas}><IoIosArrowForward size={40} /></button>
                 </div>
             </div>
 
             <h3>Drinks</h3>
             <div className='containerCarrosel'>
-                <div className='carrosel'ref={carosselDrinks}>
+                <div className='carrosel' ref={carosselDrinks}>
                     <button className='arrowLeft' onClick={handleLeftClickDrinks}><IoIosArrowBack size={40} /></button>
-
-
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
-                    <CardUser
-                        name="Bananada"
-                        ingredients="banana, sugar"
-                        price={25}
-                        dish_img="https://github.com/ignacioMalessaNeto.png"
-                    />
+                    { 
+                        drinks && <CardUser data={drinks} key={drinks.id}/>
+                    }
 
                     <button className='arrowright' onClick={handleRightClickDrinks}><IoIosArrowForward size={40} /></button>
                 </div>

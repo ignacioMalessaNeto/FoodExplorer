@@ -6,7 +6,7 @@ export function AppUsersRoutes() {
     return (
         <Routes>
             <Route path="/" element={<UserHome />} />
-            <Route path="/UserDetails" element={<UserDetails />} />
+            <Route path="/UserDetails/:dish_id" element={<UserDetails />} />
         </Routes>
     )
 }

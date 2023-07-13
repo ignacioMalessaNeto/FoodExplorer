@@ -15,8 +15,9 @@ import { Footer } from '../../Components/Footer';
 import { IngredientItem } from '../../Components/IngredientItem';
 
 export function UpdateDish() {
+    // const navigate = useNavigate();
 
-
+    const [dish, setDish] = useState("")
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
@@ -24,14 +25,6 @@ export function UpdateDish() {
     const [ingredients, setIngredients] = useState([]);
     const [newIngredients, setNewIngredients] = useState("");
     const [dishImage, setDishImage] = useState("");
-
-    
-
-    async function handleDishUpdate(){
-
-
-    }
-
 
     return (
         <Container>

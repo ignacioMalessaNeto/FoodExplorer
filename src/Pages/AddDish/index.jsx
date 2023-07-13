@@ -35,7 +35,7 @@ export function AddDish() {
     async function handleNewDish() {
         try {
 
-            if(name){
+            if(!name){
                 return alert("Digite o nome do prato")
             }
 
@@ -116,6 +116,7 @@ export function AddDish() {
                 <OptionDish>
                     <label htmlFor="opcoes">Categoria</label>
                     <select id="opcoes" onChange={e => setCategory(e.target.value)}>
+                        <option value=""></option>
                         <option value="meal">Refeição</option>
                         <option value="dessert">Sobremesa</option>
                         <option value="drinks">Drinks</option>

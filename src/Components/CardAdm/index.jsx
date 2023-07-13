@@ -1,19 +1,20 @@
 import { Container } from './styles';
-import { useState } from 'react';
 import { PiPencilSimpleDuotone } from 'react-icons/pi';
 import { IoMdArrowDropright } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
-export function CardAdm({data, ...rest }) {
+import { api } from '../../Services/api';
+
+export function CardAdm({ data }) {
     return (
-        <Container {...rest}>
-            <button  className='buttonPencil'><Link to="/updateDish"><PiPencilSimpleDuotone/></Link></button>
-            <img className='imgDish' src={data.dish_img} alt="Image dish"/>
-            <Link className='toDetails' to="/admDetails">{data.name} <IoMdArrowDropright/></Link>
-            <p>
-                {data.description}
-            </p>
-            <h2>R$ {data.price},00 </h2>
-        </Container>
+        data.map(dish => (
+            <Container key={dish.id}>
+                <button className='buttonPencil'><Link to="/updateDish"><PiPencilSimpleDuotone /></Link></button>
+                <img className='imgDish' src={`${api.defaults.baseURL}/files/${dish.img_dish}`} alt="Image dish" />
+                <Link className='toDetails' to={`admDetails/${dish.id}`}>{dish.name}<IoMdArrowDropright /></Link>
+                <h2>R$ {dish.price} </h2>
+            </Container>
+        ))
     )
 }
+

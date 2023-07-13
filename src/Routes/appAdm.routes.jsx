@@ -13,8 +13,8 @@ export function AppAdmRoutes() {
     return (
         <Routes>
             <Route path="/" element={<AdmHome />} />
-            <Route path="/admDetails" element={<AdmDetails />} />
             <Route path="/addDish" element={<AddDish />} />
+            <Route path="/admDetails/:dish_id" element={<AdmDetails />} />
             <Route path="/updateDish/:dish_id" element={<UpdateDish />} />
         </Routes>
     )

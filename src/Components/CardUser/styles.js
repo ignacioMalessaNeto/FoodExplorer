@@ -69,5 +69,10 @@ export const Container = styled.div`
     p{
       font-weight: 400;
       color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      display: -webkit-box;
+     -webkit-box-orient: vertical;
+     -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 `;

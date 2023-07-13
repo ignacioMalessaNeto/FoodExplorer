@@ -30,8 +30,8 @@ export function SignUp(){
         api.post("/users", { name, email, password, is_admin})
         .then(()=>{
             console.log("chegou aqui")
-            alert("Usuário cadastrado com sucesso!")
             navigate("/")
+            return alert("Usuário cadastrado com sucesso!")
         })
         .catch(error =>{
             if(error.response){

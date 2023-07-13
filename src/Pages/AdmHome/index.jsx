@@ -4,18 +4,17 @@ import { HeaderAdm } from '../../Components/HeaderAdm'
 
 import food from '../../assets/food.png';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import { CardAdm } from '../../Components/CardAdm';
 
 import { Footer } from '../../Components/Footer';
-import { BsDatabaseFillSlash } from 'react-icons/bs';
 
-function handleDetails({ dish_id }) {
+import { api } from '../../Services/api';
 
-}
+import { useNavigate, useParams } from 'react-router-dom';
 
 export function AdmHome() {
     const carossel = useRef(null);
@@ -113,6 +112,26 @@ export function AdmHome() {
         carosselDrinks.current.scrollLeft = newScrollLeft;
     };
 
+    const [allDishes, setAllDishes] = useState([]);
+    const [meals, setMeals] = useState();
+    const [desserts, setDesserts] = useState();
+    const [drinks, setDrinks] = useState();
+
+    function filterCategories(allDishes){
+        setMeals(allDishes.filter((dish) => dish.category === "meal"))
+        setDesserts(allDishes.filter((dish) => dish.category === "dessert"))
+        setDrinks(allDishes.filter((dish) => dish.category === "drinks"))
+    }
+
+    useEffect(() => {
+        async function fecthDishs() {
+            const response = await api.get("/dish");
+            filterCategories(response.data);
+            setAllDishes(response.data);
+        }
+
+        fecthDishs();
+    }, [])
 
     return (
         <Container>
@@ -123,13 +142,10 @@ export function AdmHome() {
                 <div className='carrosel' ref={carossel}>
                     <button className='arrowLeft' onClick={handleLeftClick}><IoIosArrowBack size={40} /></button>
 
-                    {   
-                        dishsMeal.map(dishMeal=> (
-                        <CardAdm
-                            key={String(dishMeal.id)}
-                            data={dishMeal}
-                        />
-                    ))}
+
+                    { 
+                        meals && <CardAdm data={meals} key={meals.id}/>
+                    }
 
                     <button className='arrowright' onClick={handleRightClick}><IoIosArrowForward size={40} /></button></div>
             </div>
@@ -139,13 +155,9 @@ export function AdmHome() {
                 <div className='carrosel' ref={carosselSobremesas}>
                     <button className='arrowLeft' onClick={handleLeftClickSobremesas}><IoIosArrowBack size={40} /></button>
 
-                    {   
-                        dishsDessert.map(dishDessert => (
-                        <CardAdm
-                            key={String(dishDessert.id)}
-                            data={dishDessert}
-                        />
-                    ))}
+                    { 
+                        desserts && <CardAdm data={desserts} key={desserts.id}/>
+                    }
 
                     <button className='arrowright' onClick={handleRightClickSobremesas}>
                         <IoIosArrowForward size={40} />
@@ -160,13 +172,9 @@ export function AdmHome() {
                         <IoIosArrowBack size={40} />
                     </button>
 
-                     {   
-                        dishsDrinks.map(dishDrink => (
-                        <CardAdm
-                            key={String(dishDrink.id)}
-                            data={dishDrink}
-                        />
-                    ))}
+                    { 
+                        drinks && <CardAdm data={drinks} key={drinks.id}/>
+                    }
 
                     <button className='arrowright' onClick={handleRightClickDrinks}>
                         <IoIosArrowForward size={40} />
