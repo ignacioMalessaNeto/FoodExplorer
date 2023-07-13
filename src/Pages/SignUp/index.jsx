@@ -22,9 +22,9 @@ export function SignUp(){
             return alert("Preencha todos os campos!")
         }
        
-        // if(password < 6){
-        //     return alert("A senha tem que ter no mínimo 6 caracteres")
-        // }
+        if(password < 6){
+            return alert("A senha tem que ter no mínimo 6 caracteres")
+        }
 
 
         api.post("/users", { name, email, password, is_admin})
