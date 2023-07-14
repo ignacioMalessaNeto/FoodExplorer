@@ -133,7 +133,6 @@ export function UserHome() {
 
     return (
         <Container>
-            <HeaderUser />
             <img src={food} alt="" className='logo' />
             <h3>Refeições</h3>
             <div className='containerCarrosel'>

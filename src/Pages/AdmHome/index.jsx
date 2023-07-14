@@ -117,6 +117,7 @@ export function AdmHome() {
     const [desserts, setDesserts] = useState();
     const [drinks, setDrinks] = useState();
 
+    
     function filterCategories(allDishes){
         setMeals(allDishes.filter((dish) => dish.category === "meal"))
         setDesserts(allDishes.filter((dish) => dish.category === "dessert"))
@@ -135,7 +136,6 @@ export function AdmHome() {
 
     return (
         <Container>
-            <HeaderAdm />
             <img src={food} alt="" className='logo' />
             <h3>Refeições</h3>
             <div className='containerCarrosel'>
@@ -186,3 +186,4 @@ export function AdmHome() {
         </Container>
     )
 }
+

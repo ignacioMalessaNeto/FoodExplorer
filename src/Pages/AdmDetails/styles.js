@@ -6,6 +6,7 @@ export const Container = styled.div`
     .img_dish{
         width: 390px;
         height: 389px;
+        border-radius: 50%;
     }
 
     .content{

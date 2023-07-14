@@ -82,7 +82,6 @@ export function AddDish() {
     }
     return (
         <Container>
-            <HeaderAdm />
             <Button />
             <h1>Adicionar prato</h1>
 

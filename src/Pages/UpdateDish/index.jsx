@@ -307,7 +307,6 @@ export function UpdateDish() {
 
     return (
         <Container>
-            <HeaderAdm />
             <Button />
             <h1>Editar prato</h1>
             <main>

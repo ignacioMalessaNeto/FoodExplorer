@@ -45,7 +45,6 @@ export function AdmDetails() {
 
   return (
     <Container>
-      <HeaderAdm/>
     
       <Button />
       {dishs &&

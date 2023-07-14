@@ -49,7 +49,6 @@ export function UserDetails() {
 
   return (
     <Container>
-      <HeaderUser />
 
       <Button />
       {dishs &&
