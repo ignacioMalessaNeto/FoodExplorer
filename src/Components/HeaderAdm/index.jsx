@@ -23,7 +23,7 @@ export function HeaderAdm(){
 
             <Link className='buttonOrder' to="/addDish">Novo Prato</Link>
 
-            <button onClick={signOut}><img src={exit} alt="icon for exit" /></button>
+            <Link to='/'><button onClick={signOut}><img src={exit} alt="icon for exit" /></button></Link>
         </Container>
     )
 }

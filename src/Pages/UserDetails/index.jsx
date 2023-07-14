@@ -1,6 +1,6 @@
 import { Container } from './styles';
 
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 import { Button } from '../../Components/Button';
@@ -20,6 +20,8 @@ import { api } from '../../Services/api';
 import { useParams } from 'react-router-dom';
 
 export function UserDetails() {
+  const [amount, setAmount] = useState(1);
+
   const [dishs, setDishs] = useState();
 
   const { dish_id } = useParams();
@@ -44,6 +46,7 @@ export function UserDetails() {
   }, [])
 
 
+
   return (
     <Container>
       <HeaderUser />
@@ -51,27 +54,28 @@ export function UserDetails() {
       <Button />
       {dishs &&
         <div className='content'>
-          <img src="https://github.com/ignacioMalessaNeto.png" />
+          <img className='img_dish' src={`${api.defaults.baseURL}/files/${dishs.img_dish}`} />
           <main>
 
             <h1>{dishs.name}</h1>
 
             <p>{dishs.description}</p>
 
-            {
-              ingredients && ingredients.map(ingredient => (
-                <Ingredients
-                  key={ingredient.id}
-                  title={ingredient.name}
-                />
-              ))
-            }
-
+            <div>
+              {
+                dishs.ingredients && dishs.ingredients.map(ingredient => (
+                  <Ingredients
+                    key={ingredient.id}
+                    title={ingredient.name}
+                  />
+                ))
+              }
+            </div>
             <div className='buttonsAmount'>
               <button className='buttonAmount' onClick={() => { setAmount(amount - 1) }}><AiOutlineMinus /></button>
               {amount}
               <button className='buttonAmount' onClick={() => { setAmount(amount + 1) }}><AiOutlinePlus /></button>
-              <ButtonText title={`Incluir ${dishes.price}`}></ButtonText>
+              <ButtonText title={`Incluir R$:${dishs.price}`}></ButtonText>
             </div>
           </main>
         </div>

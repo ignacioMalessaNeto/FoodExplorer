@@ -16,10 +16,15 @@ export const Container = styled.div`
         gap: 10px
     }
 
+    .img_dish{
+        width: 390px;
+        height: 389px;
+    }
+
     main {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 47px;
         justify-content: center;
     }
 

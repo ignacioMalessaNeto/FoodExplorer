@@ -50,7 +50,7 @@ export function AdmDetails() {
       <Button />
       {dishs &&
       <div className='content'>
-      <img src={`${api.defaults.baseURL}/files/${dishs.img_dish}`}/>
+      <img className='img_dish'src={`${api.defaults.baseURL}/files/${dishs.img_dish}`}/>
 
       <main>
 
@@ -60,7 +60,7 @@ export function AdmDetails() {
 
       <div>
         {
-          ingredients && ingredients.map(ingredient => (
+          dishs.ingredients && dishs.ingredients.map(ingredient => (
             <Ingredients
             key={ingredient.id} 
             title={ingredient.name}
@@ -68,7 +68,7 @@ export function AdmDetails() {
           ))
         }
       </div>
-      <Link to={`/updateDish//${dish_id}`}><ButtonText title="Editar prato"/></Link>
+      <Link to={`/updateDish/${dish_id}`}><ButtonText title="Editar prato"/></Link>
       </main>
       </div>
     }

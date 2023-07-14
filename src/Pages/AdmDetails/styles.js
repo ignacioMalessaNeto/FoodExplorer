@@ -3,7 +3,11 @@ import styled from 'styled-components';
 export const Container = styled.div`
     font-family: 'Poppins', sans-serif;
 
-    
+    .img_dish{
+        width: 390px;
+        height: 389px;
+    }
+
     .content{
         padding: 0px 121px 155px;
         display: flex;
@@ -13,7 +17,7 @@ export const Container = styled.div`
     main {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 47px;
         justify-content: center;
     }
 

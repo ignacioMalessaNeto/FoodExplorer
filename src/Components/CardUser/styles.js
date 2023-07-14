@@ -66,13 +66,23 @@ export const Container = styled.div`
         font-weight: 400;
     }
 
-    p{
-      font-weight: 400;
-      color: ${({ theme }) => theme.COLORS.LIGHT_400};
-      display: -webkit-box;
+    .ingredients{
+      width: 277px;
+
+      display: flex;
+
+      gap: 5px;
+
+      padding: 0 20px;
+
      -webkit-box-orient: vertical;
      -webkit-line-clamp: 2;
       overflow: hidden;
       text-overflow: ellipsis;
+      span{
+      font-size: 14px;
+      font-weight: 400;
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+     }
     }
 `;

@@ -50,7 +50,6 @@ export function AddDish() {
                 price,
                 ingredients
             })
-            console.log(data.dish_id);
             const fileUploadForm = new FormData();
             fileUploadForm.append("img_dish", dishImage);
             fileUploadForm.append("dish_id", data.dish_id)

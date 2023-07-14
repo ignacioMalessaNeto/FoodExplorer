@@ -9,10 +9,15 @@ export function CardAdm({ data }) {
     return (
         data.map(dish => (
             <Container key={dish.id}>
-                <button className='buttonPencil'><Link to="/updateDish"><PiPencilSimpleDuotone /></Link></button>
+                <button className='buttonPencil'><Link to={`/updateDish/${dish.id}`}><PiPencilSimpleDuotone /></Link></button>
                 <img className='imgDish' src={`${api.defaults.baseURL}/files/${dish.img_dish}`} alt="Image dish" />
                 <Link className='toDetails' to={`admDetails/${dish.id}`}>{dish.name}<IoMdArrowDropright /></Link>
-                <h2>R$ {dish.price} </h2>
+                <div className="ingredients">
+                    {dish.ingredients.map((ingredient) => (
+                        <span key={ingredient.id} className="ingredient">{ingredient.name}</span>
+                    ))}
+                </div>
+                <h2>R${dish.price} </h2>
             </Container>
         ))
     )
