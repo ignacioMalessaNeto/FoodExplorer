@@ -15,6 +15,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     background: ${({ theme }) => theme.COLORS.DARK_200};
+    animation: fadeInAndStop1 1.5s forwards;
 
     .buttonsAmount{
         display: flex;
@@ -66,10 +67,22 @@ export const Container = styled.div`
       -webkit-line-clamp: 2;
        overflow: hidden;
        text-overflow: ellipsis;
+       font-family: 'Poppins', sans-serif;
      }
      span{
       font-size: 14px;
       font-weight: 400;
       color: ${({ theme }) => theme.COLORS.LIGHT_400};
      }
+
+     @keyframes fadeInAndStop1 {
+    0% {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    }
 `;

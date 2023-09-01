@@ -2,7 +2,6 @@ import { Container } from './styles';
 
 import { useState, useEffect } from 'react';
 
-
 import { Button } from '../../Components/Button';
 
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
@@ -10,10 +9,6 @@ import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { ButtonText } from '../../Components/ButtonText';
 
 import { Ingredients } from '../../Components/Ingredients';
-
-import { HeaderUser } from '../../Components/HeaderUser';
-
-import { Footer } from '../../Components/Footer'
 
 import { api } from '../../Services/api';
 
@@ -23,12 +18,14 @@ export function UserDetails() {
   const [amount, setAmount] = useState(1);
 
   const [dishs, setDishs] = useState();
-
+  
   const { dish_id } = useParams();
-
+  
   const [ingredients, setIngredients] = useState([]);
-
+  
   useEffect(() => {
+
+
     async function getDish() {
       const response = await api.get(`/dish/${dish_id}`);
       setDishs(response.data);
@@ -79,7 +76,6 @@ export function UserDetails() {
           </main>
         </div>
       }
-      <Footer />
     </Container>
   )
 }

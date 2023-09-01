@@ -30,5 +30,6 @@ export default {
       CAKE_100: "#82F3FF",
       CAKE_200: "#065E7C",
 
+      GRADIENTS_200 : "#091E26",
     }
   }

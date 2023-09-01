@@ -6,23 +6,38 @@ import { IoMdArrowDropright } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { api } from '../../Services/api';
 export function CardUser({ data }) {
-    const [amount, setAmount ] = useState("");
+    const [amounts, setAmounts] = useState({}); // Estado para armazenar quantidades individuais
+
+    function addAmount(dishId) {
+        setAmounts(prevAmounts => ({
+            ...prevAmounts,
+            [dishId]: (prevAmounts[dishId] || 0) + 1
+        }));
+    }
+
+    function removeAmount(dishId) {
+        if (amounts[dishId] > 0) {
+            setAmounts(prevAmounts => ({
+                ...prevAmounts,
+                [dishId]: prevAmounts[dishId] - 1
+            }));
+        }
+    }
+
     return (
         data.map(dish => (
-            <Container>
+            <Container key={dish.id}>
                 <button className='buttonHearth'><AiOutlineHeart /></button>
                 <img className='imgDish' src={`${api.defaults.baseURL}/files/${dish.img_dish}`} alt="Image dish" />
                 <Link className='toDetails' to={`/UserDetails/${dish.id}`}>{dish.name} <IoMdArrowDropright /></Link>
                 <div className="ingredients">
-                    {dish.ingredients.map((ingredient) => (
-                        <span key={ingredient.id} className="ingredient">{ingredient.name}</span>
-                    ))}
+                    <div className="ingredients">{dish.description}</div>
                 </div>
                 <h2>R${dish.price}</h2>
                 <div className='buttonsAmount'>
-                    <button className='buttonAmount' onClick={() => { setAmount(amount - 1) }}><AiOutlineMinus /></button>
-                    0{amount}
-                    <button className='buttonAmount' onClick={() => { setAmount(amount + 1) }}><AiOutlinePlus /></button>
+                    <button className='buttonAmount' onClick={() => removeAmount(dish.id)}><AiOutlineMinus /></button>
+                    <span className='amount'>{amounts[dish.id] || 0}</span>
+                    <button className='buttonAmount' onClick={() => addAmount(dish.id)}><AiOutlinePlus /></button>
                     <button className='buttonIncluse'>Incluir</button>
                 </div>
             </Container>

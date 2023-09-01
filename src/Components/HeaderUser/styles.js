@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-
-
 export const Container = styled.header`
     width: 100%;
     height: 104px;
@@ -19,9 +17,18 @@ export const Container = styled.header`
         border: none;
         border-radius: 5px;
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
-        font-family: 'Poppins', sans-serif;;
+        font-family: 'Poppins', sans-serif;
         gap: 10px;
     }
+    .order{
+        display:  none;
+    }
+    
+    .divider {
+        display: flex;
+    }
+    
+
     
     button{
         background: none;
@@ -32,4 +39,65 @@ export const Container = styled.header`
         width: 500px;
         margin-top: 5px;
     }
+
+
+    label {
+        display: flex;
+        gap: 5px;
+        font-family: 'Poppins', sans-serif;
+    }
+    .labels {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    @media (max-width: 1300px){
+    padding: 0 80px 0 80px;
+    
+    .heading{
+        max-width: 400px;
+    }
+        
+    .buttonOrder{
+        display: none;
+    }
+    
+    .order{
+        display:  flex;
+    }
+    }
+
+    @media (max-width: 800px){
+    padding: 0 80px 0 80px;
+    
+    .labels{
+        display: none;
+    }
+
+    .heading{
+        max-width: 400px;
+    }
+        
+    .buttonOrder{
+        display: none;
+    }
+    
+    .order{
+        display:  flex;
+    }
+
+    }
+`;
+
+export const Labels1 = styled.div`
+    display: none; 
+    @media (max-width: 800px){
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
 `;

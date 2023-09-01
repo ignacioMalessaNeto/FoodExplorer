@@ -1,7 +1,5 @@
 import { Container } from './styles';
 
-import { HeaderAdm } from '../../Components/HeaderAdm'
-
 import food from '../../assets/food.png';
 
 import { useEffect, useRef, useState } from 'react';
@@ -10,17 +8,22 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import { CardAdm } from '../../Components/CardAdm';
 
-import { Footer } from '../../Components/Footer';
-
 import { api } from '../../Services/api';
 
-import { useNavigate, useParams } from 'react-router-dom';
+import logoHome from '../../assets/logoHome.png';
 
-export function AdmHome() {
+import logoHomeMobile from '../../assets/logoHomeMobile.png';
+
+export function AdmHome({ searchQuery, searchType }) {
     const carossel = useRef(null);
     const carosselSobremesas = useRef(null);
     const carosselDrinks = useRef(null);
-
+    const [allDishes, setAllDishes] = useState([]);
+    const[searchDish, setSearchDish] = useState([]);
+    const [meals, setMeals] = useState();
+    const [desserts, setDesserts] = useState();
+    const [drinks, setDrinks] = useState();
+    
 
     const handleRightClick = (e) => {
         e.preventDefault();
@@ -112,40 +115,54 @@ export function AdmHome() {
         carosselDrinks.current.scrollLeft = newScrollLeft;
     };
 
-    const [allDishes, setAllDishes] = useState([]);
-    const [meals, setMeals] = useState();
-    const [desserts, setDesserts] = useState();
-    const [drinks, setDrinks] = useState();
+    function filterCategories(searchDish) {
+        setMeals(searchDish.filter((dish) => dish.category === "meal"))
+        setDesserts(searchDish.filter((dish) => dish.category === "dessert"))
+        setDrinks(searchDish.filter((dish) => dish.category === "drinks"))
+    }
 
-    
-    function filterCategories(allDishes){
-        setMeals(allDishes.filter((dish) => dish.category === "meal"))
-        setDesserts(allDishes.filter((dish) => dish.category === "dessert"))
-        setDrinks(allDishes.filter((dish) => dish.category === "drinks"))
+    async function fetchDishesByParam(param) {
+        try {
+            const response = await api.get(`/dish?${param}`);
+            filterCategories(response.data);
+            setAllDishes(response.data);
+        } catch (error) {
+            console.error("Error fetching dishes:", error);
+        }
     }
 
     useEffect(() => {
-        async function fecthDishs() {
-            const response = await api.get("/dish");
-            filterCategories(response.data);
-            setAllDishes(response.data);
+        if (searchType == "name") {
+            fetchDishesByParam(`name=${searchQuery}`);
+        }else if(searchType == "description"){
+            fetchDishesByParam(`description=${searchQuery}`)
         }
-
-        fecthDishs();
-    }, [])
-
+         else {
+            fetchDishesByParam("");
+        }
+    }, [searchQuery, searchType]);
+    
     return (
         <Container>
-            <img src={food} alt="" className='logo' />
+            <div className='logo'>
+                <img className='imageDesckTop' src={logoHome} alt="Image logo" />
+                <img className='imageMobile' src={logoHomeMobile} alt="Image logo" />
+
+                <div className='descrip'>
+                <h1>Sabores inigualáveis</h1>
+                <p className='text'>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+                </div>
+            </div>
             <h3>Refeições</h3>
             <div className='containerCarrosel'>
                 <div className='carrosel' ref={carossel}>
                     <button className='arrowLeft' onClick={handleLeftClick}><IoIosArrowBack size={40} /></button>
 
-
-                    { 
-                        meals && <CardAdm data={meals} key={meals.id}/>
-                    }
+                    {meals && meals.length > 0 ? (
+                        <CardAdm data={meals} key={meals.id} />
+                    ) : (
+                        <p>Nenhum prato cadastrado ainda.</p>
+                    )}
 
                     <button className='arrowright' onClick={handleRightClick}><IoIosArrowForward size={40} /></button></div>
             </div>
@@ -155,9 +172,11 @@ export function AdmHome() {
                 <div className='carrosel' ref={carosselSobremesas}>
                     <button className='arrowLeft' onClick={handleLeftClickSobremesas}><IoIosArrowBack size={40} /></button>
 
-                    { 
-                        desserts && <CardAdm data={desserts} key={desserts.id}/>
-                    }
+                    {desserts && desserts.length > 0 ? (
+                        <CardAdm data={desserts} key={desserts.id} />
+                    ) : (
+                        <p>Nenhum prato cadastrado ainda.</p>
+                    )}
 
                     <button className='arrowright' onClick={handleRightClickSobremesas}>
                         <IoIosArrowForward size={40} />
@@ -172,17 +191,16 @@ export function AdmHome() {
                         <IoIosArrowBack size={40} />
                     </button>
 
-                    { 
-                        drinks && <CardAdm data={drinks} key={drinks.id}/>
-                    }
-
+                    {drinks && drinks.length > 0 ? (
+                        <CardAdm data={drinks} key={drinks.id} />
+                    ) : (
+                        <p>Nenhum prato cadastrado ainda.</p>
+                    )}
                     <button className='arrowright' onClick={handleRightClickDrinks}>
                         <IoIosArrowForward size={40} />
                     </button>
                 </div>
             </div>
-
-            <Footer />
         </Container>
     )
 }

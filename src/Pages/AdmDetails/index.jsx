@@ -8,10 +8,6 @@ import { ButtonText } from '../../Components/ButtonText'
 
 import { Ingredients } from '../../Components/Ingredients';
 
-import { HeaderAdm } from '../../Components/HeaderAdm';
-
-import { Footer } from '../../Components/Footer';
-
 import { Link } from 'react-router-dom';
 
 import { api } from '../../Services/api';
@@ -21,7 +17,7 @@ import { useParams } from 'react-router-dom';
 export function AdmDetails() {
   const [dishs, setDishs] = useState();
 
-  const {  dish_id } = useParams();
+  const { dish_id } = useParams();
 
   const [ingredients, setIngredients] = useState([]);
   
@@ -39,7 +35,6 @@ export function AdmDetails() {
 
   getDish()
   getIngredients()
-  console.log(dishs)
   }, [])
 
 
@@ -72,7 +67,6 @@ export function AdmDetails() {
       </div>
     }
 
-      <Footer/>
     </Container>
   )
 }

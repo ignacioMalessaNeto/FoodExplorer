@@ -19,6 +19,7 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     justify-content: end;
+    gap: 20px;
  }
 
  .buttonCreate{
@@ -32,7 +33,8 @@ export const Container = styled.div`
 .inputPrice{
     height: 44px;
 
-        width: 150px;
+    width: 168px;
+
 
         border-radius: 5px;
 
@@ -72,6 +74,29 @@ export const Container = styled.div`
 
         
     }
+
+    @media(max-width: 950px){
+        
+        h1{
+            padding: 0 20px  23px;
+        }
+
+        main{
+            padding: 0 20px 116px ;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .inputName {
+            max-width: 320px;
+        }
+
+        .inputPrice{
+            width: 320px;
+        }
+    }
 `
 
 export const ImageDish = styled.div`
@@ -100,6 +125,7 @@ export const ImageDish = styled.div`
     svg{
         font-size: 30px;
     }
+
 }
 `
 
@@ -128,5 +154,9 @@ export const SectionIngredients = styled.div`
     border-radius: 5px;
     display: flex;
     align-items: center;
-
+    @media(max-width: 965px){
+        max-width: 320px;
+        flex-wrap: wrap;
+        height: 88px;
+    }
 `;

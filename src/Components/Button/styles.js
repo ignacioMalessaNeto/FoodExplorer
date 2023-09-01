@@ -16,4 +16,9 @@ export const Container = styled(Link)`
     &:disabled{
         opacity: 0.5;
     }
+
+    @media(max-width: 950px){
+        margin: 32px 0 42px 40px;
+    }
+
 `;

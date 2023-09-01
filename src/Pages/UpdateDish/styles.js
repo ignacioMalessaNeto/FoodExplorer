@@ -83,6 +83,31 @@ export const Container = styled.div`
 
         
     }
+
+
+
+    @media(max-width: 950px){
+        
+        h1{
+            padding: 0 20px  23px;
+        }
+
+        main{
+            padding: 0 20px 116px ;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .inputName {
+            max-width: 330px;
+        }
+
+        .inputPrice{
+            width: 330px;
+        }
+    }
 `
 
 export const ImageDish = styled.div`
@@ -111,6 +136,7 @@ export const ImageDish = styled.div`
     svg{
         font-size: 30px;
     }
+
 }
 `
 
@@ -147,5 +173,10 @@ export const SectionIngredients = styled.div`
     border-radius: 5px;
     display: flex;
     align-items: center;
+    @media(max-width: 965px){
+        width: 85%;
+        flex-wrap: wrap;
+        height: 88px;
 
+    }
 `;

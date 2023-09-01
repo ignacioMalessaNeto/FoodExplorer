@@ -4,6 +4,8 @@ import { Container, Form } from './styles';
 import { Link } from 'react-router-dom'
 import { InputAuth } from '../../Components/InputAuth';
 import { useAuth } from '../../Hooks/auth';
+import {TbEye} from 'react-icons/tb';
+
 
 import foodExplorerLogo from '../../assets/foodExplorerLogo.png'
 export function SigIn() {
@@ -12,8 +14,8 @@ export function SigIn() {
 
     const { signIn } = useAuth();
 
-    function handleSignIn(){
-        if(password < 6){
+    function handleSignIn() {
+        if (password.length < 6) {
             return alert("A senha tem que ter no mínimo 6 caracteres")
         }
         signIn({ email, password })
@@ -28,26 +30,27 @@ export function SigIn() {
                 <h1>Faça seu login</h1>
                 <Box>
                     <label htmlFor="Email">Email</label>
-                    <InputAuth 
-                    placeholder='Exemplo: exemplo@exemplo.com.br' 
-                    type="email"
-                    onChange={ e => setEmail(e.target.value)}
+                    <InputAuth
+                        placeholder='Exemplo: exemplo@exemplo.com.br'
+                        type="email"
+                        onChange={e => setEmail(e.target.value)}
                     />
                 </Box>
                 <Box>
                     <label htmlFor="password">Senha</label>
-                    <InputAuth 
-                    placeholder='No mínimo 6 caracteres' 
-                    type="password"
-                    onChange={ e => setPassword(e.target.value)} 
+                    <InputAuth
+                        icon={TbEye}
+                        placeholder='No mínimo 6 caracteres'
+                        type="password"
+                        onChange={e => setPassword(e.target.value)}
                     />
                 </Box>
-                <button 
-                type="button"
-                className='buttonLogin'
-                onClick={handleSignIn}
+                <button
+                    type="button"
+                    className='buttonLogin'
+                    onClick={handleSignIn}
                 >
-                Entrar
+                    Entrar
                 </button>
                 <Link className='buttonCreateLogin' to="/register">Criar uma conta</Link>
             </Form>

@@ -4,13 +4,9 @@ import { Button } from '../../Components/Button';
 
 import { Box } from '../../Components/Box';
 
-import { HeaderAdm } from '../../Components/HeaderAdm';
-
 import { Textarea } from '../../Components/Textarea';
 
 import { BsUpload } from 'react-icons/bs';
-
-import { Footer } from '../../Components/Footer';
 
 import { IngredientItem } from '../../Components/IngredientItem';
 
@@ -35,40 +31,52 @@ export function AddDish() {
     async function handleNewDish() {
         try {
 
-            if(!name){
-                return alert("Digite o nome do prato")
+            if (!name) {
+                return alert("Digite o nome do prato!")
             }
 
-            if(newIngredients){
+            if (!category) {
+                return alert("Selecione a categoria do prato!")
+            }
+
+            if (newIngredients) {
                 return alert("Você deixou um ingrediente no campo para adicionar. Clique para adicionar ou deixe o campo vazio.")
             }
 
-            const { data } = await api.post("/dish", {
-                name,
-                description,
-                category,
-                price,
-                ingredients
-            })
-            const fileUploadForm = new FormData();
-            fileUploadForm.append("img_dish", dishImage);
-            fileUploadForm.append("dish_id", data.dish_id)
+            if (dishImage) {
+                const { data } = await api.post("/dish", {
+                    name,
+                    description,
+                    category,
+                    price,
+                    ingredients,
+                });
 
-            await api.patch("dish/img_dish/", fileUploadForm)
+                const fileUploadForm = new FormData();
+                fileUploadForm.append("img_dish", dishImage);
+                fileUploadForm.append("dish_id", data.dish_id);
+                await api.patch("dish/img_dish/", fileUploadForm);
+            } else {
+                await api.post("/dish", {
+                    name,
+                    description,
+                    category,
+                    price,
+                    ingredients,
+                });
+            }
 
-            alert("Nota criada com sucesso!");
+            alert("Prato criado com sucesso!");
             navigate("/");
-        } catch (erro) {
-            alert("Não foi possível criar o prato")
+        } catch (error) {
+            alert("Não foi possível criar o prato");
         }
     }
 
     function handleChangeImg_dish(event) {
-
         const img_dish = event.target.files[0];
 
         setDishImage(img_dish);
-
     }
 
 
@@ -134,7 +142,7 @@ export function AddDish() {
                             ))
                         }
                         <IngredientItem
-                            isNew
+                            isnew
                             placeholder="Novo ingrediente"
                             value={newIngredients}
                             onChange={e => setNewIngredients(e.target.value)}
@@ -169,7 +177,6 @@ export function AddDish() {
                     >Salvar alterações</button>
                 </div>
             </main>
-            <Footer />
         </Container>
     )
 }

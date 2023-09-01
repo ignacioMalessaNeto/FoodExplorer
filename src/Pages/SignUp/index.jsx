@@ -2,6 +2,8 @@ import { Box } from '../../Components/Box';
 import { Link, useNavigate  } from 'react-router-dom';
 import {useState} from "react";
 import { InputAuth } from '../../Components/InputAuth';
+import { TbEye} from 'react-icons/tb';
+
 
 import { api } from '../../Services/api';
 
@@ -18,18 +20,17 @@ export function SignUp(){
 
     
     function handleSignUp(){
+
+        if (password.length < 6) {
+           return alert("A senha tem que ter no mínimo 6 caracteres");
+        }
+
         if(!name || !email || !password){
             return alert("Preencha todos os campos!")
         }
-       
-        if(password < 6){
-            return alert("A senha tem que ter no mínimo 6 caracteres")
-        }
-
 
         api.post("/users", { name, email, password, is_admin})
         .then(()=>{
-            console.log("chegou aqui")
             navigate("/")
             return alert("Usuário cadastrado com sucesso!")
         })
@@ -68,6 +69,7 @@ export function SignUp(){
                 <Box>
                     <label htmlFor="password">Senha</label>
                     <InputAuth 
+                    icon={TbEye}
                     placeholder='No mínimo 6 caracteres' 
                     type="password"
                     onChange={e=> setPassword(e.target.value)}

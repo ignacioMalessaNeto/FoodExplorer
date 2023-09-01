@@ -4,11 +4,11 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
-    background: ${({ theme, isNew}) => isNew ? `transparent` : theme.COLORS.LIGHT_800};
+    background: ${({ theme, isnew}) => isnew ? `transparent` : theme.COLORS.LIGHT_800};
 
     color: ${({ theme }) => theme.COLORS.LIGHT_800};
 
-    border: ${({ theme, isNew}) => isNew ? `1px dashed  ${theme.COLORS.LIGHT_800}`: "none"};
+    border: ${({ theme, isnew}) => isnew ? `1px dashed  ${theme.COLORS.LIGHT_800}`: "none"};
 
 
     border-radius: 10px;
@@ -35,7 +35,7 @@ export const Container = styled.div`
 
         padding: 0 0 0 8px;
         
-        color: ${({ theme, isNew}) => isNew ? theme.COLORS.LIGHT_800 : theme.COLORS.LIGHT_100};
+        color: ${({ theme, isnew}) => isnew ? theme.COLORS.LIGHT_800 : theme.COLORS.LIGHT_100};
         background: transparent;
 
         border: none;
@@ -43,4 +43,6 @@ export const Container = styled.div`
             color: ${({ theme }) => theme.COLORS.GRAY_300};
         }
     }
+
+
 `;
