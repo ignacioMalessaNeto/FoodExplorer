@@ -1,16 +1,6 @@
 
 # Front-end Food explorer
 Access the application here:nexustech-food.netlify.app
-
-## Techs
-
-[![Techs](https://skillicons.dev/icons?i=react,styledcomponents,vite,axios)](https://skillicons.dev)
-
-# Libraries
-- React Icons
-- Axios
-- Swiper
-- React Router
 # API documentation
 Simple web project that aims to have 2 types of users, the user type who will be able to search for dishes and see their details, and beyond that order and pay for a certain dish he chooses, and we also have the administrator type who will be able to register edit the dish and in the future, as the customer places the order, define the state of it if it is being prepared ready or being delivered.
 
