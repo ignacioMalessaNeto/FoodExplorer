@@ -1,18 +1,16 @@
-import React from 'react';
 import { Container } from './styles';
 import { CardUser } from '../../Components/CardUser';
 import { api } from '../../Services/api';
 import { useRef, useState, useEffect } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import logoHome from '../../assets/logoHome.png';
-import logoHomeMobile from '../../assets/logoHomeMobile.png';
+import PropTypes from 'prop-types'; 
 
 export function UserHome({ searchQuery, searchType }) {
     const carossel = useRef(null);
     const carosselSobremesas = useRef(null);
     const carosselDrinks = useRef(null);
     const [allDishes, setAllDishes] = useState([]);
-    const [searchDish, setSearchDish] = useState([]);
+    // const [searchDish, setSearchDish] = useState([]);
     const [meals, setMeals] = useState();
     const [desserts, setDesserts] = useState();
     const [drinks, setDrinks] = useState();
@@ -137,51 +135,54 @@ export function UserHome({ searchQuery, searchType }) {
     return (
         <Container>
             <div className='logo'>
-                <img className='imageDesckTop' src={logoHome} alt="Image logo" />
-                <img className='imageMobile' src={logoHomeMobile} alt="Image logo" />
-
-                <div className='descrip'>
-                <h1>Sabores inigualáveis</h1>
+                <div className='imageDeskTop'></div>
+                <div className='description'>
+                <h1>Sabores espetaculares</h1>
                 <p className='text'>Sinta o cuidado do preparo com ingredientes selecionados.</p>
                 </div>
             </div>
             <h3>Refeições</h3>
-            <div className='containerCarrosel'>
-                <div className='carrosel' ref={carossel}>
+            <div className='containerCarrossel'>
+                <div className='carrossel' ref={carossel}>
                     <button className='arrowLeft' onClick={handleLeftClick}><IoIosArrowBack size={40} /></button>
                     {meals && meals.length > 0 ? (
                         <CardUser data={meals} key={meals.id} />
                     ) : (
                         <p>Nenhum prato cadastrado ainda.</p>
                     )}
-                    <button className='arrowright' onClick={handleRightClick}><IoIosArrowForward size={40} /></button>
+                    <button className='arrowRight' onClick={handleRightClick}><IoIosArrowForward size={40} /></button>
                 </div>
             </div>
             <h3>Sobremesas</h3>
-            <div className='containerCarrosel'>
-                <div className='carrosel' ref={carosselSobremesas}>
+            <div className='containerCarrossel'>
+                <div className='carrossel' ref={carosselSobremesas}>
                     <button className='arrowLeft' onClick={handleLeftClickSobremesas}><IoIosArrowBack size={40} /></button>
                     {desserts && desserts.length > 0 ? (
                         <CardUser data={desserts} key={desserts.id} />
                     ) : (
                         <p>Nenhum prato cadastrado ainda.</p>
                     )}
-                    <button className='arrowright' onClick={handleRightClickSobremesas}><IoIosArrowForward size={40} /></button>
+                    <button className='arrowRight' onClick={handleRightClickSobremesas}><IoIosArrowForward size={40} /></button>
                 </div>
             </div>
 
             <h3>Drinks</h3>
-            <div className='containerCarrosel'>
-                <div className='carrosel' ref={carosselDrinks}>
+            <div className='containerCarrossel'>
+                <div className='carrossel' ref={carosselDrinks}>
                     <button className='arrowLeft' onClick={handleLeftClickDrinks}><IoIosArrowBack size={40} /></button>
                     {drinks && drinks.length > 0 ? (
                         <CardUser data={drinks} key={drinks.id} />
                     ) : (
                         <p>Nenhum prato cadastrado ainda.</p>
                     )}
-                    <button className='arrowright' onClick={handleRightClickDrinks}><IoIosArrowForward size={40} /></button>
+                    <button className='arrowRight' onClick={handleRightClickDrinks}><IoIosArrowForward size={40} /></button>
                 </div>
             </div>
         </Container>
     )
 }
+UserHome.propTypes = {
+    searchQuery: PropTypes.string.isRequired,
+    searchType: PropTypes.string.isRequired,
+}
+

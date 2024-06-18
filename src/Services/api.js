@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "https://nexusweb-food.onrender.com"
+    baseURL: "http://10.100.10.5:3333/"
 })

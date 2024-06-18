@@ -24,14 +24,14 @@ export function SigIn() {
     return (
         <Container>
             <div>
-                <img src={foodExplorerLogo} alt="Imagem do logo" />
+                <img src={foodExplorerLogo} alt="Imagem do logo" className='image-logo'/>
             </div>
             <Form>
-                <h1>Faça seu login</h1>
+                <h1 className="title-login">Faça seu login</h1>
                 <Box>
                     <label htmlFor="Email">Email</label>
                     <InputAuth
-                        placeholder='Exemplo: exemplo@exemplo.com.br'
+                        placeholder='exemplo@exemplo.com.br'
                         type="email"
                         onChange={e => setEmail(e.target.value)}
                     />

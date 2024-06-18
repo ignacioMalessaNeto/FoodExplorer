@@ -12,7 +12,6 @@ import { api } from '../../Services/api';
 
 import logoHome from '../../assets/logoHome.png';
 
-import logoHomeMobile from '../../assets/logoHomeMobile.png';
 
 export function AdmHome({ searchQuery, searchType }) {
     const carossel = useRef(null);
@@ -146,7 +145,7 @@ export function AdmHome({ searchQuery, searchType }) {
         <Container>
             <div className='logo'>
                 <img className='imageDesckTop' src={logoHome} alt="Image logo" />
-                <img className='imageMobile' src={logoHomeMobile} alt="Image logo" />
+                <img className='imageMobile' src={logoHome} alt="Image logo" />
 
                 <div className='descrip'>
                 <h1>Sabores inigualáveis</h1>

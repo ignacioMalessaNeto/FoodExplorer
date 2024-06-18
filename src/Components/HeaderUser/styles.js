@@ -1,103 +1,102 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 export const Container = styled.header`
-    width: 100%;
-    height: 104px;
+  width: 100%;
+  height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: ${({ theme }) => theme.COLORS.DARK_600};
+  padding: 0 123px;
+  gap: 32px;
+
+  .buttonOrder {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    background: ${({ theme }) => theme.COLORS.DARK_600};
-    padding: 0 123px;
-    gap: 32px;
+    padding: 16px 46.5px;
+    background: ${({ theme }) => theme.COLORS.TOMATO_100};
+    border: none;
+    border-radius: 5px;
+    color: ${({ theme }) => theme.COLORS.DARK_600};
+    font-family: "Poppins", sans-serif;
+    gap: 10px;
+  }
+  .order {
+    display: none;
+  }
 
-    .buttonOrder{
-        display: flex;
-        align-items: center;
-        padding: 16px 46.5px;
-        background: ${({ theme }) => theme.COLORS.TOMATO_100};
-        border: none;
-        border-radius: 5px;
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
-        font-family: 'Poppins', sans-serif;
-        gap: 10px;
-    }
-    .order{
-        display:  none;
-    }
+  .divider {
+    display: none;
+  }
+
+  button {
+    background: none;
+    border: none;
+  }
+  label {
+    display: flex;
+    gap: 5px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .heading {
+    width: 800px;
+  }
+  .labels {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .containInputSearch {
+    width: 100%;
+  }
+
+  .foodExplorerLogoMobile {
+    display: none;
+  }
+
+  @media (max-width: 1300px) {
+    padding: 0 40px 0 40px;
     
-    .divider {
-        display: flex;
-    }
     
-
-    
-    button{
-        background: none;
-        border: none;
+    .heading {
+      max-width: 400px;
     }
 
-    div{
-        width: 500px;
-        margin-top: 5px;
+    .buttonOrder {
+      display: none;
     }
 
-
-    label {
-        display: flex;
-        gap: 5px;
-        font-family: 'Poppins', sans-serif;
-    }
-    .labels {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
+    .order {
+      display: none;
     }
 
-    @media (max-width: 1300px){
-    padding: 0 80px 0 80px;
-    
-    .heading{
-        max-width: 400px;
-    }
-        
-    .buttonOrder{
-        display: none;
-    }
-    
-    .order{
-        display:  flex;
-    }
+    .logout {
+      display: none;
     }
 
-    @media (max-width: 800px){
-    padding: 0 80px 0 80px;
-    
-    .labels{
-        display: none;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 750px) {
+    padding: 0 20px;
+    gap: 5px;
+
+    a{
+      width: 250px;
     }
 
-    .heading{
-        max-width: 400px;
-    }
-        
-    .buttonOrder{
-        display: none;
-    }
-    
-    .order{
-        display:  flex;
+    .logoFoodExplorer {
+      display: none;
     }
 
+    .foodExplorerLogoMobile {
+      display: block;
+      width: 100%;
     }
-`;
-
-export const Labels1 = styled.div`
-    display: none; 
-    @media (max-width: 800px){
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    
+  }
+  @media (max-width: 480px) {
+    padding: 0 20px;
+    gap: 5px;
+  }
 `;

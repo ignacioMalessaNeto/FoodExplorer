@@ -1,94 +1,81 @@
-import { Container, Labels1 } from './styles'
-import { useAuth } from '../../Hooks/auth'
-import { AiOutlineSearch } from "react-icons/ai"
-import { Link } from 'react-router-dom'
+import { Container } from "./styles";
+import { AiOutlineSearch } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { Input } from "../Input";
-import React, { useState } from 'react';
-import order from '../../assets/order.svg'
-import exit from '../../assets/exit.svg'
-import logoFoodExplorer from "../../assets/logoFoodExplorer.png"
+import { Logout } from "../Logout";
 
-export function HeaderUser({ onSearch }) {
-    const { signOut } = useAuth();
-    const [searchType, setSearchType] = useState("name")
-    const handleSearch = (searchQuery) => {
-        onSearch(searchQuery, searchType);
-    };
+// import { useState } from "react";
+import { MenuMobile } from "../MenuMobile";
+import order from "../../assets/order.svg";
+import logoFoodExplorer from "../../assets/logoFoodExplorer.png";
+import  foodExplorerLogoMobile from "../../assets/foodExplorerLogoMobile.png";
 
-    return (
-        <>
-            <Container>
-                <Link to='/'><img src={logoFoodExplorer} alt="Logo image food explorer" /></Link>
+import PropTypes from "prop-types";
 
-                <div className='heading'>
-                    <div className='labels'>
-                        <Input
-                            icon={AiOutlineSearch}
-                            placeholder="Busque por pratos."
-                            onChange={(e) => handleSearch(e.target.value)}
-                        />
-                        <div className='divider'>
-                            <label>
-                                <input
-                                    type="radio"
-                                    value="name"
-                                    checked={searchType === "name"}
-                                    onChange={() => setSearchType("name")}
-                                />
-                                Nome
-                            </label>
+// {onSearch}
+export function HeaderUser() {
+  // const [searchType, setSearchType] = useState("name");
+  // const handleSearch = (searchQuery) => {
+  //   onSearch(searchQuery, searchType);
+  // };
 
-                            <label>
-                                <input
-                                    type="radio"
-                                    value="description"
-                                    checked={searchType === "description"}
-                                    onChange={() => setSearchType("description")}
-                                />
-                                Ingredientes
-                            </label>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <>
+      <Container>
+        <MenuMobile />
+        <Link to="/">
+          <img src={logoFoodExplorer} className="logoFoodExplorer" alt="Logo image food explorer" />
+          <img src={foodExplorerLogoMobile} className="foodExplorerLogoMobile" alt="Logo image food explorer" />
+        </Link>
 
-                <button className='buttonOrder'> <img src={order} alt="order image" /> Pedidos (0)</button>
+        <div className="heading">
 
-                <img src={order} alt="order image" className='order' />
+          <div className="labels">
+            <div className="containInputSearch">
+              <Input
+                icon={AiOutlineSearch}
+                placeholder="Busque por pratos."
+                // onChange={(e) => handleSearch(e.target.value)}
+              />
+            </div>
+            {/* <div className="divider">
+              <label>
+                <input
+                  type="radio"
+                  value="name"
+                  checked={searchType === "name"}
+                  onChange={() => setSearchType("name")}
+                />
+                Nome
+              </label>
 
-                <Link to={"/"}><button onClick={signOut}><img src={exit} alt="icon for exit" /></button></Link>
+              <label>
+                <input
+                  type="radio"
+                  value="description"
+                  checked={searchType === "description"}
+                  onChange={() => setSearchType("description")}
+                />
+                Ingredientes
+              </label>
+            </div> */}
+          </div>
+        </div>
 
+        <button className="buttonOrder">
+          {" "}
+          <img src={order} alt="order image" /> Pedidos (0)
+        </button>
 
-            </Container>
-            <Labels1>
-                <div className='inputMobile'>
-                    <Input
-                        icon={AiOutlineSearch}
-                        placeholder="Busque por pratos."
-                        onChange={(e) => handleSearch(e.target.value)}
-                    />
-                </div>
-                <div className='divider'>
-                    <label>
-                        <input
-                            type="radio"
-                            value="name"
-                            checked={searchType === "name"}
-                            onChange={() => setSearchType("name")}
-                        />
-                        Nome
-                    </label>
+        <img src={order} alt="order image" className="order" />
 
-                    <label>
-                        <input
-                            type="radio"
-                            value="description"
-                            checked={searchType === "description"}
-                            onChange={() => setSearchType("description")}
-                        />
-                        Ingredientes
-                    </label>
-                </div>
-            </Labels1>
-        </>
-    )
+        <div className="logout">
+          <Logout alt="icone de logout" />
+        </div>
+      </Container>
+    </>
+  );
 }
+HeaderUser.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};

@@ -7,6 +7,7 @@ export const InputContainer = styled.div`
 
 export const InputField = styled.input`
   width: 100%;
+  min-width: 80%;
   padding: 16px 14px;
   color: ${({ theme }) => theme.COLORS.LIGHT_800};
   border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_800};
