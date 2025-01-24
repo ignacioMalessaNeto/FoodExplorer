@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding:  10% 131px 10px 131px;
   overflow: hidden;
-  gap: 50px;
+  gap: 10%;
 
   input {
     padding: 16px 14px;
@@ -20,44 +20,17 @@ export const Container = styled.div`
     animation: fadeInAndStop 1.5s forwards;
   }
 
-  .image-logo{
+  .image-logo {
     @media (max-width: 400px) {
-      width: 50vw;
+      width: 80vw;
     }
-  }
-
-  .title-login {
-    text-align: center;
-
-    @media (max-width: 400px) {
-      font-size: 6vw;
-    }
-  }
-
-  .buttonLogin {
-    background: ${({ theme }) => theme.COLORS.TOMATO_100};
-    border: none;
-    padding: 12px 0;
-    border-radius: 5px;
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    min-width: 80px;
-  }
-
-  .buttonCreateLogin {
-      text-align: center;
-      border: none;
-      color: ${({ theme }) => theme.COLORS.LIGHT_100};
-      @media (max-width: 400px) {
-        font-size: 6vw;
-      }
   }
 
   @media (max-width: 1032px) {
     flex-direction: column;
 
-    padding: 100px  0px;
+    padding: 100px 0px;
   }
-
 
   @media (max-width: 1032px) {
     flex-direction: column;
@@ -87,17 +60,46 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
+  max-width: 450px;
+  width: 100%;
+  max-height: 500px;
+  height: 80%;
   border-radius: 16px;
   padding: 50px 50px 0;
   gap: 32px;
   display: flex;
   flex-direction: column;
-  width: 50%;
-  height: 55vh;
   background: ${({ theme }) => theme.COLORS.DARK_700};
   animation: fadeInAndStop1 1.5s forwards;
+
+  .title-login {
+    text-align: center;
+
+    @media (max-width: 400px) {
+      font-size: 6vw;
+    }
+  }
+
+  .buttonLogin {
+    background: ${({ theme }) => theme.COLORS.CAKE_200};
+    border: none;
+    padding: 12px 0;
+    border-radius: 5px;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    min-width: 80px;
+  }
+
+  .buttonCreateLogin {
+    text-align: center;
+    border: none;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    @media (max-width: 400px) {
+      font-size: 6vw;
+    }
+  }
+
   @media (max-width: 1032px) {
-    padding: 20px;
-    width: 70vw;
+    padding: 30px;
+    width: 90%;
   }
 `;

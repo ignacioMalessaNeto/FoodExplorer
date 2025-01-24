@@ -15,7 +15,7 @@ export function SignUp(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [is_admin, setIs_admin] = useState(false);
+    const [is_admin] = useState(false);
     const navigate = useNavigate();
 
     
@@ -45,28 +45,28 @@ export function SignUp(){
     return(
         <Container>
             <div>
-                <img src={foodExplorerLogo} alt="Imagem do logo" />
+                <img src={foodExplorerLogo} alt="Imagem do logo" className='image-logo'/>
             </div>
             <Form>
                 <h1>Crie sua conta</h1>
-                <Box>
+                <Box className="box-input">
                     <label htmlFor="Email">Seu nome</label>
                     <InputAuth 
-                    placeholder='Exemplo: Maria da Silva'
+                    placeholder='Digite seu nome'
                     onChange={e=> setName(e.target.value)}
                     type="text" 
                     />
                 </Box>
 
-                <Box>
+                <Box className="box-input">
                     <label htmlFor="Email">Email</label>
                     <InputAuth 
-                    placeholder='Exemplo: exemplo@exemplo.com.br' 
+                    placeholder='Digite seu e-mail' 
                     type="email"
                     onChange={e=> setEmail(e.target.value)} 
                     />
                 </Box>
-                <Box>
+                <Box className="box-input">
                     <label htmlFor="password">Senha</label>
                     <InputAuth 
                     icon={TbEye}
