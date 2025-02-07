@@ -15,6 +15,7 @@ function AuthProvider({ children }) {
             localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
             localStorage.setItem("@foodexplorer:token", token)
 
+            // biome-ignore lint/complexity/useLiteralKeys: <explanation>
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             setData({ user, token })
         } catch (error) {

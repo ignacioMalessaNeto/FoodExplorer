@@ -1,7 +1,5 @@
 import { Container } from './styles';
 
-import food from '../../assets/food.png';
-
 import { useEffect, useRef, useState } from 'react';
 
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
@@ -13,7 +11,7 @@ import { api } from '../../Services/api';
 import logoHome from '../../assets/logoHome.png';
 
 
-export function AdmHome({ searchQuery, searchType }) {
+export function AdmHome({ searchQuery }) {
     const carossel = useRef(null);
     const carosselSobremesas = useRef(null);
     const carosselDrinks = useRef(null);
@@ -122,24 +120,18 @@ export function AdmHome({ searchQuery, searchType }) {
 
     async function fetchDishesByParam(param) {
         try {
-            const response = await api.get(`/dish?${param}`);
+            const endpoint = param ? `/dish?name=${param}` : '/dish';
+            const response = await api.get(endpoint);
             filterCategories(response.data);
             setAllDishes(response.data);
-        } catch (error) {
+          } catch (error) {
             console.error("Error fetching dishes:", error);
-        }
+          }
     }
 
     useEffect(() => {
-        if (searchType == "name") {
-            fetchDishesByParam(`name=${searchQuery}`);
-        }else if(searchType == "description"){
-            fetchDishesByParam(`description=${searchQuery}`)
-        }
-         else {
-            fetchDishesByParam("");
-        }
-    }, [searchQuery, searchType]);
+        fetchDishesByParam(searchQuery);
+    }, [searchQuery]);
     
     return (
         <Container>

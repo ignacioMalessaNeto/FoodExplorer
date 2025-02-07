@@ -4,22 +4,43 @@ export const Container = styled.header`
   height: 104px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   background: ${({ theme }) => theme.COLORS.DARK_600};
-  padding: 0 123px;
-  gap: 32px;
+  padding: 0 10%;
+  gap: 25px;
+
+  .inputSearch::placeholder {
+    text-align: center;
+  }
+
+  .favorites {
+    white-space: nowrap;
+    color: ${({ theme }) => theme.COLORS.CAKE_100};
+  }
 
   .buttonOrder {
+    min-width: 150px;
+    max-width: 250px;
+    width: 8vw;
     display: flex;
+    justify-content: center;
+    text-align: center;
     align-items: center;
-    padding: 16px 46.5px;
-    background: ${({ theme }) => theme.COLORS.TOMATO_100};
+    padding: 10px;
+    background: ${({ theme }) => theme.COLORS.GRADIENTS_200};
     border: none;
     border-radius: 5px;
-    color: ${({ theme }) => theme.COLORS.DARK_600};
+    color: ${({ theme }) => theme.COLORS.CAKE_100};
     font-family: "Poppins", sans-serif;
+    font-size: 100%;
     gap: 10px;
+    border: 1px solid ${({ theme }) => theme.COLORS.CAKE_100};
   }
+  .orderButton {
+    min-width: 20px;
+    width: 15%;
+  }
+
   .order {
     display: none;
   }
@@ -37,10 +58,11 @@ export const Container = styled.header`
     gap: 5px;
     font-family: "Poppins", sans-serif;
   }
-
+  
   .heading {
     width: 800px;
   }
+
   .labels {
     display: flex;
     flex-direction: column;
@@ -54,11 +76,39 @@ export const Container = styled.header`
   .foodExplorerLogoMobile {
     display: none;
   }
+  @media (max-width: 500px) {
+    flex-direction: column;
+    justify-content: center !important;
 
+    .logoFoodExplorer {
+      max-width: 165px;
+    }
+    .buttonHome {
+      text-align: center;
+    }
+    .heading {
+      width: 80%;
+    }
+  }
+  @media (max-width: 750px) {
+    padding: 0 10px;
+    gap: 5px;
+    .logoFoodExplorer {
+      min-width: 150px;
+      max-width: 190px;
+      width: 100%;
+    }
+    a {
+      width: 250px;
+    }
+  }
   @media (max-width: 1300px) {
     padding: 0 40px 0 40px;
     
-    
+    .favorites {
+      display: none; 
+    }
+
     .heading {
       max-width: 400px;
     }
@@ -76,27 +126,5 @@ export const Container = styled.header`
     }
 
     justify-content: space-between;
-  }
-
-  @media (max-width: 750px) {
-    padding: 0 20px;
-    gap: 5px;
-
-    a{
-      width: 250px;
-    }
-
-    .logoFoodExplorer {
-      display: none;
-    }
-
-    .foodExplorerLogoMobile {
-      display: block;
-      width: 100%;
-    }
-  }
-  @media (max-width: 480px) {
-    padding: 0 20px;
-    gap: 5px;
   }
 `;

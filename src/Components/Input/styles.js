@@ -10,8 +10,11 @@ export const Container = styled.div`
   color: ${({ theme }) => theme.COLORS.LIGHT_700};
 
   gap: 15px;
+  padding: 10px 1rem;
 
-  padding: 1.2rem 2rem;
+  /* padding: 1.2rem 2rem; */
+
+  border: 1px solid ${({ theme }) => theme.COLORS.CAKE_100};
 
   border-radius: 10px;
 
@@ -32,7 +35,7 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
   }
 
-  @media (max-width: 750px) {
-    padding: 10px
-  }
+  /* @media (max-width: 750px) {
+    padding: 10px;
+  } */
 `;

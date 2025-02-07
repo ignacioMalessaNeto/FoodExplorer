@@ -10,6 +10,11 @@ export const Container = styled.div`
     background: ${({ theme }) => theme.COLORS.DARK_600};
     padding: 0 121px;
 
+    .logo-footer {
+        min-width: 80px;
+        max-width: 180px;
+        width: 20%;
+    }
 
     @media (max-width: 800px){
         gap: 20px;

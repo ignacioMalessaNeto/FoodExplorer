@@ -2,63 +2,64 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-
   padding: 50px 5%;
 
-  h1{
-    font-size: clamp(15px, 4vw, 40px);
-  }
+  h1 {
+    font-size: clamp(20px, 2vw, 35px);
 
-  h3 {
-    font-size: clamp(25px, 6vw, 40px);
-    color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    animation: fadeInAndStop 1.5s forwards;
-    padding-top: 5%;
+    flex-wrap: nowrap;
   }
-
   p {
+    font-size: clamp(14px, 2vw, 20px);
     font-family: "Poppins", sans-serif;
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
     display: flex;
     text-align: center;
     align-items: center;
-    font-size: clamp(8px, 3vw, 24px);
     height: 462px;
   }
+  h3 {
+    font-size: clamp(25px, 2vw, 34px);
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    animation: fadeInAndStop 1.5s forwards;
+    padding-top: 5%;
+  }
+
+  
   svg {
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
   }
-   
 
   .logo {
-    flex-wrap: wrap;
-    max-width: 1100px;
-    min-height: 450px;
+    max-width: 2500px;
+    min-height: 400px;
     display: flex;
     animation: fadeInAndStop 1.5s forwards;
     background-color: ${({ theme }) => theme.COLORS.GRADIENTS_200};
     border-radius: 10px;
     margin: 0 auto;
+    justify-content: center;
     align-items: center;
-    padding: 5%;
+    gap: 5%;
+    padding: 7%;
   }
 
   .description {
     height: 80px;
-    max-width: 422px;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 150px;
+    gap: 10px;
   }
 
   .imageDeskTop {
-    width: 50%;
-    height: 250px;
-    min-width: 150px;
-    background-image: url("/src/assets/logoHome.png");
-    background-size: cover;
-    background-position: 50%;
+    width: 80%;
+    height: 80%; /* Mantém a proporção da imagem */
+    max-height: 560px;
+    min-width: 300px;
+    max-width: 560px;
+    object-fit: cover; /* Similar ao background-size: cover */
   }
 
   .arrowLeft {
@@ -84,7 +85,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
-    max-width: 1400px;
     min-width: 300px;
     animation: fadeInAndStop 1.5s forwards;
   }
@@ -103,19 +103,24 @@ export const Container = styled.div`
   .carrossel::-webkit-scrollbar {
     display: none;
   }
-  
+
   @media (max-width: 1150px) {
     .logo {
       max-width: 600px;
-      justify-content: space-around;
+      flex-direction: column;
+      gap: 50px;
     }
-    .imageDeskTop{
-        width: 100%;
-    }
+    /* .imageDeskTop {
+      width: 100%;
+    } */
   }
   @media (max-width: 800px) {
     .containerCarrossel {
       padding: 16px 50px 16px 50px;
+    }
+    .imageDeskTop {
+      /* width: 80%; */
+      max-height: 400px;
     }
   }
   @media (max-width: 665px) {
@@ -123,9 +128,10 @@ export const Container = styled.div`
       min-width: 350px;
     }
   }
-  @media (max-width: 350px) {
-    .imageDeskTop{
-        min-width: 180px;
+  @media (max-width: 400px) {
+    .imageDeskTop {
+      max-height: 300px;
+      min-width: 250px;
     }
     .logo {
       min-width: 200px;

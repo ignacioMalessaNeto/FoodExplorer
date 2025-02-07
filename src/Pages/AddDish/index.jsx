@@ -122,7 +122,7 @@ export function AddDish() {
                 <OptionDish>
                     <label htmlFor="opcoes">Categoria</label>
                     <select id="opcoes" onChange={e => setCategory(e.target.value)}>
-                        <option value=""></option>
+                        <option value="" />
                         <option value="meal">Refeição</option>
                         <option value="dessert">Sobremesa</option>
                         <option value="drinks">Drinks</option>
@@ -172,6 +172,7 @@ export function AddDish() {
 
                 <div className='positionButton'>
                     <button
+                        type='button'
                         className='buttonCreate'
                         onClick={handleNewDish}
                     >Salvar alterações</button>
